@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=4 uid="uid://cf0w0skqs3k64"]
+[gd_scene load_steps=28 format=4 uid="uid://cf0w0skqs3k64"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_t0xh4"]
-[ext_resource type="Texture2D" uid="uid://bt5o0sr6peltq" path="res://Assets/Models/gobot/model/gobot_gobot_diffuse.png" id="2_wip06"]
+[ext_resource type="Texture2D" uid="uid://cmueet8fun8r5" path="res://Assets/Models/gobot/model/gobot_gobot_diffuse.png" id="2_wip06"]
 [ext_resource type="Texture2D" uid="uid://cgkj45d67dalm" path="res://Assets/Models/gobot/model/gobot_gobot_roughness.png" id="3_g220w"]
 [ext_resource type="Texture2D" uid="uid://d28w5bql3g21l" path="res://Assets/Models/gobot/model/gobot_gobot_normal.png" id="4_si8bj"]
 [ext_resource type="Script" path="res://Scripts/CameraMovement.gd" id="5_pxu3x"]
+[ext_resource type="Texture2D" uid="uid://mmxkhd5lxe5q" path="res://Assets/Models/gobot/model/left_eye.png" id="6_cqdoc"]
 [ext_resource type="ArrayMesh" uid="uid://deu06eho4c74" path="res://Assets/Resources/cloud.res" id="6_nkgvq"]
 [ext_resource type="AudioStream" uid="uid://ncq6fpsrcmjh" path="res://Assets/Audio/SFX/walking.ogg" id="7_asqdb"]
 
@@ -27,6 +28,7 @@ normal_texture = ExtResource("4_si8bj")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6max2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n4eaq"]
+albedo_texture = ExtResource("6_cqdoc")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_je0dh"]
 resource_name = "gobot_GobotMesh"
@@ -2049,7 +2051,6 @@ point_count = 3
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_t0xh4")
-jump_force = 6.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000624448, 0.675578, -0.00332153)

@@ -1,16 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://po63m4srixl4"]
+[gd_scene load_steps=16 format=3 uid="uid://po63m4srixl4"]
 
 [ext_resource type="PackedScene" uid="uid://0t0qb3qjq6my" path="res://Scenes/PlatformRed.tscn" id="2_4lh3q"]
 [ext_resource type="PackedScene" uid="uid://cf0w0skqs3k64" path="res://Scenes/player.tscn" id="2_21dfl"]
-[ext_resource type="PackedScene" uid="uid://dfc0ecsjufu7v" path="res://Scenes/PlatformBlue.tscn" id="3_mj5wy"]
+[ext_resource type="PackedScene" uid="uid://vafymuuu70gt" path="res://Assets/Models/new_cloud.tscn" id="2_2612n"]
 [ext_resource type="Script" path="res://Scripts/DeadZone.gd" id="4_8ry15"]
 [ext_resource type="PackedScene" uid="uid://bk5n0tn4k1l0c" path="res://Scenes/Coin.tscn" id="5_4fiv6"]
+[ext_resource type="PackedScene" uid="uid://dx868v5wcdvd6" path="res://features.tscn" id="5_w8cx3"]
 [ext_resource type="Script" path="res://Scripts/GameManager.gd" id="6_8fvkd"]
 [ext_resource type="Texture2D" uid="uid://cnbbny7qjh2xn" path="res://Assets/Textures/coin.png" id="7_ow7xm"]
 [ext_resource type="Script" path="res://Scripts/GameUI.gd" id="7_x8whp"]
-[ext_resource type="Texture2D" uid="uid://hk3gj75327hy" path="res://Assets/Textures/Logo.png" id="9_46gx6"]
 [ext_resource type="PackedScene" uid="uid://c8up71en5djgm" path="res://objects/platform_falling.tscn" id="10_ai4fm"]
-[ext_resource type="PackedScene" uid="uid://cnymdajj1vsqm" path="res://objects/platform.tscn" id="11_2qdom"]
 
 [sub_resource type="Environment" id="Environment_g4ka7"]
 background_mode = 1
@@ -36,12 +35,6 @@ adjustment_brightness = 1.06
 adjustment_contrast = 0.95
 adjustment_saturation = 1.09
 
-[sub_resource type="SystemFont" id="SystemFont_om7om"]
-font_names = PackedStringArray("Star Choco")
-
-[sub_resource type="SystemFont" id="SystemFont_ub50t"]
-font_names = PackedStringArray("Star Choco")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_asf4q"]
 size = Vector3(128, 17, 112)
 
@@ -53,37 +46,51 @@ multichannel_signed_distance_field = true
 font_names = PackedStringArray("Star Choco")
 
 [sub_resource type="LabelSettings" id="LabelSettings_igq7x"]
+line_spacing = 2.0
 font = SubResource("SystemFont_656xb")
-font_size = 50
-font_color = Color(0.996094, 0.691406, 0.261719, 1)
+font_size = 57
+font_color = Color(0.273087, 0.649708, 0.809882, 1)
 
 [node name="DemoScene" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_21dfl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.27804, 4.79761, 1.23578)
 
 [node name="Platforms" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0404177, 0.0447922, 0.032558)
 
-[node name="PlatformRed" parent="Platforms" instance=ExtResource("2_4lh3q")]
-transform = Transform3D(3.9312, 0, 0, 0, 0.39312, 0, 0, 0, 3.9312, 0.0200105, 3, 0.00302696)
+[node name="cloud4" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.427461, 6.00794, -15.4787)
 
-[node name="PlatformRed2" parent="Platforms" instance=ExtResource("2_4lh3q")]
-transform = Transform3D(3.9312, 0, 0, 0, 0.39312, 0, 0, 0, 3.9312, 9.02, 6, -20.997)
+[node name="cloud" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.999229, 0.0392598, 0, -0.0392598, 0.999229, 0, 0, 0, 1, -2.00087, 2.52607, 1.32067)
 
-[node name="PlatformRed3" parent="Platforms" instance=ExtResource("2_4lh3q")]
+[node name="PlatformEND" parent="Platforms" instance=ExtResource("2_4lh3q")]
 transform = Transform3D(5.30712, 0, 0, 0, 0.530712, 0, 0, 0, 5.30712, 18.02, 9, 2.00303)
 
-[node name="PlatformBlue" parent="Platforms" instance=ExtResource("3_mj5wy")]
-transform = Transform3D(3.90286, 0, 0, 0, 0.864, 0, 0, 0, 3.90286, 0, 3, -11)
+[node name="cloud2" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.14163, 3.02925, -5.16652)
 
-[node name="PlatformBlue2" parent="Platforms" instance=ExtResource("3_mj5wy")]
-transform = Transform3D(3.90286, 0, 0, 0, 0.864, 0, 0, 0, 3.90286, 0, 4.01868, -21.7155)
+[node name="cloud3" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.28455, 4.5186, -10.3226)
 
-[node name="PlatformBlue3" parent="Platforms" instance=ExtResource("3_mj5wy")]
-transform = Transform3D(3.90286, 0, 0, 0, 0.864, 0, 0, 0, 3.90286, 18, 7.01868, -20.7155)
+[node name="cloud5" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.940404, 0, 0, 0, 1, 0, 0, 0, 1.12697, 4.61268, 7.48996, -20.6411)
 
-[node name="PlatformBlue4" parent="Platforms" instance=ExtResource("3_mj5wy")]
-transform = Transform3D(3.90286, 0, 0, 0, 0.864, 0, 0, 0, 3.90286, 18, 8.01868, -9.71549)
+[node name="cloud6" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.253285, 0, -0.967392, 0, 1, 0, 0.967392, 0, 0.253285, 17.9434, 9.88704, -23.8766)
+
+[node name="cloud7" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.359772, 0, -1.16021, 0, 1, 0, 0.807872, 0, 0.51668, 11.2589, 9.12603, -22.4471)
+
+[node name="cloud8" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.359772, 0, -1.16021, 0, 1, 0, 0.807872, 0, 0.51668, 22.4774, 10.3826, -15.5568)
+
+[node name="cloud9" parent="Platforms" instance=ExtResource("2_2612n")]
+transform = Transform3D(0.359772, 0, -1.16021, 0, 1, 0, 0.807872, 0, 0.51668, 21.1306, 12.1764, -8.2758)
+
+[node name="PlatformEND2" parent="Platforms" instance=ExtResource("2_4lh3q")]
+transform = Transform3D(5.30712, 0, 0, 0, 0.530712, 0, 0, 0, 5.30712, 48.872, 24.6177, 2.00303)
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -100,48 +107,36 @@ shadow_enabled = true
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
-[node name="Sprite3D" type="Sprite3D" parent="Extras"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, -40)
-texture = ExtResource("9_46gx6")
+[node name="Label3D" type="Label3D" parent="Extras"]
+transform = Transform3D(376.199, 0, 0, 0, 52.84, 0, 0, 0, 1, 0, 0.0529628, 0)
 
-[node name="Features" type="Label3D" parent="Extras"]
-transform = Transform3D(0.387789, 0, 0.921748, 0, 1, 0, -0.921748, 0, 0.387789, -14.0511, 5.78537, -6.67751)
-text = "Features:
-Working Controller
-Double Jump
-Basic Score System
-Animations"
-font = SubResource("SystemFont_om7om")
-font_size = 250
-outline_size = 0
-uppercase = true
+[node name="Features" parent="Extras" instance=ExtResource("5_w8cx3")]
+transform = Transform3D(0.860743, 0, -336.898, 0, 1.2187, 0, 0.0445371, 0, -19.9451, -4.12537, 6.61698, -2.17305)
+modulate = Color(0.166464, 8.87411e-08, 1.50409e-08, 1)
+text = "Have Fun Bubblers"
 
-[node name="Credits" type="Label3D" parent="Extras"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0336823, 4.71136, 8.82437)
-text = "Platform Models By: Rayyan Aziz
-Character By: GDQuest
-Programming & Level Design: Adil Shafiq"
-font = SubResource("SystemFont_ub50t")
-font_size = 100
-outline_size = 0
-uppercase = true
+[node name="Label3D2" type="Label3D" parent="Extras"]
+transform = Transform3D(0.0827368, 0, -51.6393, 0, 5.61546, 0, 5.32, 0, 0.803097, 49.3393, 26.3484, 2.01996)
+modulate = Color(1, 0.796078, 1, 1)
+outline_modulate = Color(0.427113, 0.0719235, 0.555183, 1)
+text = "End. Be Happy !!"
 
 [node name="Coins" type="Node3D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("5_4fiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.36921, -11)
+transform = Transform3D(0.74977, -0.0185597, 0, 0.0185597, 0.74977, 0, 0, 0, 0.75, -6.22067, 5.21978, -4.84118)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("5_4fiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.36921, -21.6303)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 4.41493, 9.83314, -20.3068)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("5_4fiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14233, 7.06635, -20.9353)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 9.14233, 12.6962, -21.8426)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("5_4fiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8983, 8.76539, -20.793)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 17.9099, 12.4637, -24.2068)
 
 [node name="Coin5" parent="Coins" instance=ExtResource("5_4fiv6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8983, 9.70155, -9.79296)
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 17.8983, 14.578, -9.79296)
 
 [node name="GameManager" type="Node3D" parent="."]
 script = ExtResource("6_8fvkd")
@@ -174,22 +169,46 @@ stretch_mode = 4
 
 [node name="CoinsLabel" type="Label" parent="UserInterface/GameUI"]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 50.0
-offset_right = 193.0
-offset_bottom = 120.0
-theme_override_colors/font_color = Color(0.996094, 0.710938, 0.261719, 1)
-theme_override_colors/font_outline_color = Color(0.644531, 0.410156, 0.1875, 1)
+offset_left = 140.0
+offset_top = 37.0
+offset_right = 223.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.327058, 0.861356, 0.898039, 1)
+theme_override_colors/font_outline_color = Color(0.329724, 0.453318, 0.777822, 1)
 theme_override_constants/outline_size = 24
 theme_override_fonts/font = SubResource("SystemFont_1ixsq")
 theme_override_font_sizes/font_size = 48
-text = "X 3"
+text = "X 0"
 label_settings = SubResource("LabelSettings_igq7x")
 
 [node name="platform-falling" parent="." instance=ExtResource("10_ai4fm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1547, 3.98684, 0.729434)
+transform = Transform3D(1.35109, 0, 0, 0, 0.840014, 0, 0, 0, 1.42287, 28.5278, 12.3973, 0.729434)
 
-[node name="platform" parent="." instance=ExtResource("11_2qdom")]
-transform = Transform3D(0.998922, 0.0464265, 0, -0.0464265, 0.998922, 0, 0, 0, 1, 5.50001, 2.51465, 2.46577)
+[node name="platform-falling2" parent="." instance=ExtResource("10_ai4fm")]
+transform = Transform3D(1.35109, 0, 0, 0, 0.840014, 0, 0, 0, 1.42287, 28.528, 16.4043, 8.61443)
+
+[node name="platform-falling3" parent="." instance=ExtResource("10_ai4fm")]
+transform = Transform3D(1.35109, 0, 0, 0, 0.840014, 0, 0, 0, 1.42287, 36.0201, 20.7637, 7.33423)
+
+[node name="Coin5" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 29.0003, 13.7471, 1.18827)
+
+[node name="Coin6" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 28.4292, 17.2518, 8.63043)
+
+[node name="Coin7" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 35.8637, 21.9026, 7.15113)
+
+[node name="Coin8" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(-0.00242162, 0, 0.749996, 0, 0.75, 0, -0.749996, 0, -0.00242162, 49.0971, 25.8798, -0.822194)
+
+[node name="Coin9" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 19.5945, 10.365, 4.66108)
+
+[node name="Coin10" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 18.0281, 10.365, 4.66108)
+
+[node name="Coin11" parent="." instance=ExtResource("5_4fiv6")]
+transform = Transform3D(-0.00242162, 0, 0.749996, 0, 0.75, 0, -0.749996, 0, -0.00242162, 49.1215, 25.8885, 4.05077)
 
 [connection signal="body_entered" from="DeadZone" to="DeadZone" method="_on_body_entered"]

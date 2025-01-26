@@ -10,9 +10,9 @@ extends CharacterBody3D
 
 @export_category("Player Properties")
 @export var move_speed : float = 6
-@export var jump_force : float = 5
+@export var jump_force : float = 10
 @export var follow_lerp_factor : float = 4
-@export var jump_limit : int = 2
+@export var jump_limit : int = 3
 
 @export_group("Game Juice")
 @export var jumpStretchSize := Vector3(0.8, 1.2, 0.8)
@@ -58,17 +58,23 @@ func _process(delta):
 			perform_jump()
 		elif can_double_jump:
 			if is_moving():
+				if GameManager.ret_score() > 0:
+					perform_flip_jump()
+		else:
+			if GameManager.ret_score() > 0:
 				perform_flip_jump()
 	
 	velocity.y -= gravity * delta
 
 func perform_jump():
+	#getBubbles()
 	AudioManager.jump_sfx.play()
 	AudioManager.jump_sfx.pitch_scale = 1.12
 	
 	jumpTween()
 	animation.play("Jump")
 	velocity.y = jump_force
+	GameManager.score_norm()
 
 func perform_flip_jump():
 	AudioManager.jump_sfx.play()
@@ -78,9 +84,18 @@ func perform_flip_jump():
 	await animation.animation_finished
 	can_double_jump = false
 	animation.play("Jump", 0.5)
+	GameManager.rem_score()
+	GameManager.score_norm()
 
 func is_moving():
 	return abs(velocity.z) > 0 || abs(velocity.x) > 0
+	
+func getBubbles():
+	if Input.is_action_just_pressed("jump"):
+		for i in 5:
+			GameManager.add_score()		
+		
+	
 
 func jumpTween():
 	var tween = get_tree().create_tween()

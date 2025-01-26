@@ -16,3 +16,13 @@ func show_mouse_cursor():
 
 func add_score():
 	score += 1
+	
+func rem_score():
+	score-=1
+	
+func ret_score():
+	return score	
+	
+func score_norm():
+	if score < 0:
+		score = 0		
